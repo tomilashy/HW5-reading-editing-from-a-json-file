@@ -14,6 +14,7 @@ using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::ifstream;
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 // for convenience
@@ -23,28 +24,27 @@ using json = nlohmann::json;
 int main()
 {
 
-
-//	Json::Value root;   // starts as "null"; will contain the root value after parsing
-//	std::ifstream config_doc("coen 244 assg.json", std::ifstream::binary);
-//	config_doc >> root;
-
-// deserialize from standard input
 json j;
-//std::cin >> j;
-
-// serialize to standard output
-//std::cout << j;
-
-// the setw manipulator was overloaded to set the indentation for pretty printing
 //std::cout << std::setw(4) << j << std::endl;
 // read a JSON file
-std::ifstream i("coen 244 assg.json");
+ifstream i("coen 244 assg.json");
+
+//more like deserialization
 i >> j;
+
 // write prettified JSON to another file
 std::ofstream o("prett.json");
 o << std::setw(4) << j << std::endl;
+
+//print out a json
+for (json::iterator it = j.begin(); it != j.end(); ++it)
+{
+// the setw manipulator was overloaded to set the indentation for pretty printing
+  std::cout << std::setw(4) << *it << "\n";
+}
+
 for (json::iterator it = j.begin(); it != j.end(); ++it) {
-  std::cout <<"\n"<< *it << "H\n";
+  std::cout << it.key() << " : " << it.value() << "\n";
 }
 return 0;
 
