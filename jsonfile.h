@@ -4,8 +4,21 @@
  *  Created on: Mar 30, 2018
  *      Author: ore-oluwa.olasubulumi
  */
-#include "json.hpp"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
+// for convenience
 using json = nlohmann::json;
+#include <cstdio>
+
+
 json j;
 
 
