@@ -2,7 +2,7 @@
  * main.cpp
  *
  *  Created on: Mar 30, 2018
- *      Author: ore-oluwa.olasubulumi
+ *      Author: Ogo-Oluwa Jesutomi Olasubulumi
  */
 //Ogo-Oluwa Jesutomi Olasubulumi <tomilashy@yahoo.com>
 
@@ -25,6 +25,9 @@ void print();
 int main()
 {
 
+	cout<<"Using nlohmann json library"
+			"\nPlease note that the batters are placed first because the library automatically sorts it that way and "
+			"\nand I read nothing would be done about it so the ids come after the batters(useful when checking if its sorted)\n";
 json j;
 //std::cout << std::setw(4) << j << std::endl;
 // read a JSON file
@@ -38,8 +41,8 @@ do {
 
 cout<<"\nWhat do you what to do with coen 244 assg.json?"
 		"\n1)output json file"
-		"\n2) print inform of table"
-		"\n3) sort json  file"
+		"\n2) print in form of a table"
+		"\n3) sort json  file "
 		"\n4) Copy json file to another file"
 		"\n5) Exit";
 	cin>>a;
@@ -50,12 +53,33 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 		}
 		else if(a==2)
 		{
-			std::cout << '\n'<<"\t"<< "  ID  "<< "|\t"<< "Type"<< " \t|"<< "Name"<<"\t\t|"<< "Batter" <<"\t\t|"<< "Toppings";
+			std::cout << '\n'<<"\t"<< "  ID  "<< "|\t"<< "Type"<< " \t|"<< "Name"<<"\t\t|"<< "Batter" <<"\t\t|"<< "Toppings\n\t";
+			for(int i=0;i<60;i++)
+			{
+				cout<<"-";
+			}
 			print();
 		}
 		else if(a==3)
 		{
+
+			json t;
+
+			// read a JSON file (same thing but was rearranged for sorting)
+
+			ifstream ace("coen244.json");
+			ace>> t;
+
+
+			std::cout << "unsorted:\n"<< std::setw(4) << t << '\n';
 			//this is whats left
+
+			std::sort(t.begin(), t.end(),
+			        [](const json &a, const json &b)
+					{
+			          return a["id"] < b["id"];
+					});
+			  std::cout << "\nSorted:\n" << std::setw(4)<< t << '\n';
 		}
 
 		else if (a==4)
@@ -75,6 +99,7 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 			{
 				// the setw manipulator was overloaded to set the indentation for pretty printing
 				std::cout << std::setw(4) << *it << "\n";
+				cout<<newfile<<" created!!";
 			}
 
 		}
