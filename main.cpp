@@ -21,6 +21,24 @@ using std::ifstream;
 using json = nlohmann::json;
 #include <cstdio>
 void print();
+void printt();
+
+//template<class UnaryFunction>
+//void recursive_iterate(const json& j, UnaryFunction f)
+//{
+//    for(auto it = j.begin(); it != j.end(); ++it)
+//    {
+//        if (it->is_structured())
+//        {
+//            recursive_iterate(*it, f);
+//        }
+//        else
+//        {
+//            f(it);
+//        }
+//    }
+//}
+
 
 int main()
 {
@@ -31,7 +49,7 @@ int main()
 json j;
 //std::cout << std::setw(4) << j << std::endl;
 // read a JSON file
-ifstream i("coen 244 assg.json");
+ifstream i("coen244.json");
 
 //more like deserialization
 i >> j;
@@ -58,7 +76,15 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 			{
 				cout<<"-";
 			}
-			print();
+			printt();
+//			for (auto it : json::iterator_wrapper(j))
+//			{
+//			    std::cout << "key: " << it.key() << ", value:" << a["/0/name"]<< '\n';
+//			}
+//			recursive_iterate(j, [](json::const_iterator it){
+//			        std::cout << *it << std::endl;
+//			    });
+
 		}
 		else if(a==3)
 		{
@@ -109,6 +135,12 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 
 
 return 0;
+
+}
+
+
+void printt()
+{
 
 }
 void print()
