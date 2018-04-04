@@ -20,8 +20,7 @@ using std::ifstream;
 // for convenience
 using json = nlohmann::json;
 #include <cstdio>
-void print();
-void printt();
+
 
 //template<class UnaryFunction>
 //void recursive_iterate(const json& j, UnaryFunction f)
@@ -49,7 +48,7 @@ int main()
 json j;
 //std::cout << std::setw(4) << j << std::endl;
 // read a JSON file
-ifstream i("coen244.json");
+ifstream i("coen 244 assg.json");
 
 //more like deserialization
 i >> j;
@@ -71,12 +70,12 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 		}
 		else if(a==2)
 		{
-			std::cout << '\n'<<"\t"<< "  ID  "<< "|\t"<< "Type"<< " \t|"<< "Name"<<"\t\t|"<< "Batter" <<"\t\t|"<< "Toppings\n\t";
+			std::cout << '\n'<<"\t"<< "  ID    "<< "|\t"<< "Type"<< " \t|"<< "Name"<<"\t\t|"<< "Batter" <<"\t\t|"<< "Toppings\n\t";
 			for(int i=0;i<60;i++)
 			{
 				cout<<"-";
-			}
-			printt();
+			}cout<<"\n";
+
 //			for (auto it : json::iterator_wrapper(j))
 //			{
 //			    std::cout << "key: " << it.key() << ", value:" << a["/0/name"]<< '\n';
@@ -84,6 +83,31 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 //			recursive_iterate(j, [](json::const_iterator it){
 //			        std::cout << *it << std::endl;
 //			    });
+
+
+			unsigned  int arr=0;
+			for (arr=0;arr<j["items"]["items"].size();arr++)
+			             {
+			            for (unsigned int batter=0;batter<j["items"]["items"][arr]["batters"]["batter"].size();batter++)
+			             {
+			                for (unsigned int i=0;i<j["items"]["items"][arr]["topping"].size();i++)
+			                {
+			                	if(arr==2)
+			                	{
+			                		cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]/*<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]*/<<"\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+
+			                	}
+			                	else
+			                	{
+			                		cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]/*<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]*/<<"\t\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+			                	}
+			                }
+			              }
+			            }
+
+
+
+			             cout<<j["items"]["items"].size();
 
 		}
 		else if(a==3)
@@ -139,84 +163,3 @@ return 0;
 }
 
 
-void printt()
-{
-
-}
-void print()
-{
-	json j;
-	//std::cout << std::setw(4) << j << std::endl;
-	// read a JSON file
-	ifstream i("coen 244 assg.json");
-
-	//more like deserialization
-	i >> j;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/0/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/3/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/4/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/5/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/6/type"_json_pointer) ;
-
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/0/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/3/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/4/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/5/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/6/type"_json_pointer) ;
-
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/0/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/3/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/4/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/5/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/2/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/6/type"_json_pointer) ;
-
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/0/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/3/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/4/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/5/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/0/id"_json_pointer)<< "|\t"<< j.at("/items/items/0/type"_json_pointer) << " |"<< j.at("/items/items/0/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/0/batters/batter/3/type"_json_pointer) <<"\t|"<< j.at("/items/items/0/topping/6/type"_json_pointer) ;
-
-//ID 002 starts
-
-	std::cout << '\n'<<"\t"<< j.at("/items/items/1/id"_json_pointer)<< "|\t"<< j.at("/items/items/1/type"_json_pointer) << " |"<< j.at("/items/items/1/name"_json_pointer)<<"\t|"<< j.at("/items/items/1/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/1/topping/0/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/1/id"_json_pointer)<< "|\t"<< j.at("/items/items/1/type"_json_pointer) << " |"<< j.at("/items/items/1/name"_json_pointer)<<"\t|"<< j.at("/items/items/1/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/1/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/1/id"_json_pointer)<< "|\t"<< j.at("/items/items/1/type"_json_pointer) << " |"<< j.at("/items/items/1/name"_json_pointer)<<"\t|"<< j.at("/items/items/1/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/1/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/1/id"_json_pointer)<< "|\t"<< j.at("/items/items/1/type"_json_pointer) << " |"<< j.at("/items/items/1/name"_json_pointer)<<"\t|"<< j.at("/items/items/1/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/1/topping/3/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/1/id"_json_pointer)<< "|\t"<< j.at("/items/items/1/type"_json_pointer) << " |"<< j.at("/items/items/1/name"_json_pointer)<<"\t|"<< j.at("/items/items/1/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/1/topping/4/type"_json_pointer) ;
-
-//ID 003 starts
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/0/type"_json_pointer);
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/0/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/3/type"_json_pointer);
-
-
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/0/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/2/id"_json_pointer)<< "|\t"<< j.at("/items/items/2/type"_json_pointer) << " |"<< j.at("/items/items/2/name"_json_pointer)<<"|"<< j.at("/items/items/2/batters/batter/1/type"_json_pointer) <<"\t|"<< j.at("/items/items/2/topping/3/type"_json_pointer) ;
-
-//ID 004 starts
-	std::cout << '\n'<<"\t"<< j.at("/items/items/3/id"_json_pointer)<< "|\t"<< j.at("/items/items/3/type"_json_pointer) << "   |"<< j.at("/items/items/3/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/3/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/3/topping/0/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/3/id"_json_pointer)<< "|\t"<< j.at("/items/items/3/type"_json_pointer) << "   |"<< j.at("/items/items/3/name"_json_pointer)<<"\t\t|"<< j.at("/items/items/3/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/3/topping/1/type"_json_pointer) ;
-
-//ID 005 starts
-	std::cout << '\n'<<"\t"<< j.at("/items/items/4/id"_json_pointer)<< "|\t"<< j.at("/items/items/4/type"_json_pointer) << " |"<< j.at("/items/items/4/name"_json_pointer)<<"\t|"<< j.at("/items/items/4/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/4/topping/0/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/4/id"_json_pointer)<< "|\t"<< j.at("/items/items/4/type"_json_pointer) << " |"<< j.at("/items/items/4/name"_json_pointer)<<"\t|"<< j.at("/items/items/4/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/4/topping/1/type"_json_pointer) ;
-
-//ID 006 starts
-	std::cout << '\n'<<"\t"<< j.at("/items/items/5/id"_json_pointer)<< "|\t"<< j.at("/items/items/5/type"_json_pointer) << "|"<< j.at("/items/items/5/name"_json_pointer)<<"\t|"<< j.at("/items/items/5/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/5/topping/0/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/5/id"_json_pointer)<< "|\t"<< j.at("/items/items/5/type"_json_pointer) << "|"<< j.at("/items/items/5/name"_json_pointer)<<"\t|"<< j.at("/items/items/5/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/5/topping/1/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/5/id"_json_pointer)<< "|\t"<< j.at("/items/items/5/type"_json_pointer) << "|"<< j.at("/items/items/5/name"_json_pointer)<<"\t|"<< j.at("/items/items/5/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/5/topping/2/type"_json_pointer) ;
-	std::cout << '\n'<<"\t"<< j.at("/items/items/5/id"_json_pointer)<< "|\t"<< j.at("/items/items/5/type"_json_pointer) << "|"<< j.at("/items/items/5/name"_json_pointer)<<"\t|"<< j.at("/items/items/5/batters/batter/type"_json_pointer) <<"\t|"<< j.at("/items/items/5/topping/3/type"_json_pointer) ;
-
-
-}
