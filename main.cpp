@@ -115,7 +115,7 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 
 
 
-			             cout<<j["items"]["items"].size();
+
 
 		}
 		else if(a==3)
@@ -127,17 +127,34 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 
 			ifstream ace("coen244.json");
 			ace>> t;
+			cout<<"sort by:"
+					"\n1)Name"
+					"\n2)ID";
+				int s;
+				cin>>s;
 
 
-			std::cout << "unsorted:\n"<< std::setw(4) << t << '\n';
-			//this is whats left
 
+			if (s==1)
+			{
+			std::cout << "unsorted:\n"<< std::setw(4) << t << '\n\n';
 			std::sort(t.begin(), t.end(),
 			        [](const json &a, const json &b)
 					{
-			          return a["id"] < b["id"];
+			          return a["name"] < b["name"];
 					});
 			  std::cout << "\nSorted:\n" << std::setw(4)<< t << '\n';
+			}
+			if (s==2)
+						{
+						std::cout << "unsorted:\n"<< std::setw(4) << t << '\n\n';
+						std::sort(t.begin(), t.end(),
+						        [](const json &a, const json &b)
+								{
+						          return a["id"] < b["id"];
+								});
+						  std::cout << "\nSorted:\n" << std::setw(4)<< t << '\n';
+						}
 		}
 
 		else if (a==4)
