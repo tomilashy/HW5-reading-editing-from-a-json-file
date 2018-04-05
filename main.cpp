@@ -70,6 +70,56 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 		}
 		else if(a==2)
 		{
+			
+			
+			
+	string newfile;
+	cout<<"What's the name you want to give the new file?";
+	cin>>newfile;
+	newfile= newfile+".txt";
+
+	ofstream file(newfile);
+
+	file << '\n'<<"\t"<< "  ID    "<< "|\t"<< "Type"<< " \t|"<< "    Name"<<"\t\t|"<< "   Batter" <<"\t\t|"<< "   Toppings\n\t";
+		for(int i=0;i<100;i++)
+		{
+			file<<"-";
+		}file<<"\n";
+
+
+
+		unsigned  int arr=0;
+		for (arr=0;arr<j["items"]["items"].size();arr++)
+			     {
+			    for (unsigned int batter=0;batter<j["items"]["items"][arr]["batters"]["batter"].size();batter++)
+			     {
+				for (unsigned int i=0;i<j["items"]["items"][arr]["topping"].size();i++)
+				{
+					if(arr==2||j["items"]["items"][0]["batters"]["batter"][batter]["type"]=="Devil's Food")
+					{
+						if(arr==2)
+						{
+							file<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]<<"\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]<<"\t\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+						}
+						if(j["items"]["items"][0]["batters"]["batter"][batter]["type"]=="Devil's Food")
+						{
+							file<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]<<"\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+						}
+
+
+					}
+					else
+					{
+						file<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]<<"\t\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+					}
+				}
+			      }
+			    }
+
+		cout<<"copied into "<<newfile<<endl;
+
+		
+			
 			std::cout << '\n'<<"\t"<< "  ID    "<< "|\t"<< "Type"<< " \t|"<< "    Name"<<"\t\t|"<< "   Batter" <<"\t\t|"<< "   Toppings\n\t";
 			for(int i=0;i<80;i++)
 			{
