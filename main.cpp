@@ -58,7 +58,7 @@ do {
 
 cout<<"\nWhat do you what to do with coen 244 assg.json?"
 		"\n1)output json file"
-		"\n2) print in form of a table"
+		"\n2) print in form of a table(output show both sorted and unsorted)"
 		"\n3) sort json  file "
 		"\n4) Copy json file to another file"
 		"\n5) Exit";
@@ -70,8 +70,8 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 		}
 		else if(a==2)
 		{
-			std::cout << '\n'<<"\t"<< "  ID    "<< "|\t"<< "Type"<< " \t|"<< "Name"<<"\t\t|"<< "Batter" <<"\t\t|"<< "Toppings\n\t";
-			for(int i=0;i<60;i++)
+			std::cout << '\n'<<"\t"<< "  ID    "<< "|\t"<< "Type"<< " \t|"<< "    Name"<<"\t\t|"<< "   Batter" <<"\t\t|"<< "   Toppings\n\t";
+			for(int i=0;i<80;i++)
 			{
 				cout<<"-";
 			}cout<<"\n";
@@ -92,14 +92,22 @@ cout<<"\nWhat do you what to do with coen 244 assg.json?"
 			             {
 			                for (unsigned int i=0;i<j["items"]["items"][arr]["topping"].size();i++)
 			                {
-			                	if(arr==2)
+			                	if(arr==2||j["items"]["items"][0]["batters"]["batter"][batter]["type"]=="Devil's Food")
 			                	{
-			                		cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]/*<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]*/<<"\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+			                		if(arr==2)
+			                		{
+			                			cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]<<"\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]<<"\t\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+			                		}
+			                		if(j["items"]["items"][0]["batters"]["batter"][batter]["type"]=="Devil's Food")
+			                		{
+			                			cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]<<"\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+			                		}
+
 
 			                	}
 			                	else
 			                	{
-			                		cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]/*<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]*/<<"\t\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
+			                		cout<< "\t"<<j["items"]["items"][arr]["id"]<<"\t|  "<< j["items"]["items"][arr]["type"]<<"\t|  "<< j["items"]["items"][arr]["name"]<<"\t\t|  "<< j["items"]["items"][arr]["batters"]["batter"][batter]["type"]<<"\t\t|"<< j["items"]["items"][arr]["topping"][i]["type"]<<endl;
 			                	}
 			                }
 			              }

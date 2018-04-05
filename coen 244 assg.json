@@ -40,7 +40,7 @@
 						"ppu": 0.55,
 						"batters":
 						{
-						  "batter":{ "id": "2001", "type": "Regular" }
+						  "batter":[{ "id": "2001", "type": "Regular" }]
 						},
 						"topping":
   							[
@@ -82,7 +82,7 @@
 						"ppu": 0.55,
 						"batters":
 						{
-						  "batter":{ "id": "4001", "type": "Regular" }
+						  "batter":[{ "id": "4001", "type": "Regular" }]
 									
 						},
   					"topping":
@@ -98,7 +98,7 @@
 						"ppu": 0.55,
 						"batters":
 						{
-						  "batter":{ "id": "5001", "type": "Regular" }
+						  "batter":[{ "id": "5001", "type": "Regular" }]
 						},
 						"topping":
   							[
@@ -113,7 +113,7 @@
 						"ppu": 0.55,
 						"batters":
 						{
-						  "batter":{ "id": "6001", "type": "Regular" }
+						  "batter":[{ "id": "6001", "type": "Regular" }]
 						},
 						"topping":
   							[
